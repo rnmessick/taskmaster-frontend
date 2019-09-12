@@ -66,4 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
 # taskmaster-frontend
+
+In your README.md for your frontend repo, include:
+a description of the application and its features
+a screenshot of the application
+a link to the deployed application on S3
+a link to the backend repo
