@@ -10,23 +10,25 @@ import AddImage from './js/addImage.js';
 
 
 function App() {
-  const API = 'http://taskmasterbackend-env.yzch9c73jx.us-west-2.elasticbeanstalk.com/api/v1/tasks';
+  const API = 'http://taskmasterbackend-env.yzch9c73jx.us-west-2.elasticbeanstalk.com/api/v1/tasks/';
   const [tasks, setTasks] = useState([]);
 
   function _getTasks() {
     fetch(API)
       .then(data => data.json())
-      .then(fetchedTasks => setTasks(fetchedTasks));
+      .then(fetchedTasks => {
+        setTasks(fetchedTasks);
+      });
   }
 
   useEffect(_getTasks, []);
 
   return (
     <React.Fragment>
-      <header className="jumbotron">
+      <header >
         <h1>TaskMaster</h1>
       </header>
-      <div className="App container">
+      <div >
         <h1>Task List</h1>
         <ul>
           {tasks.map(task => {
@@ -37,7 +39,7 @@ function App() {
                     <span>{task.title}</span><br />
                   </summary>
                   <img src={task.image} alt={task.title} />
-                  <History history={task.history} />
+                  <History api={API} history={task.history} reload={_getTasks} />
                   <AssignUser api={API} data={task} reload={_getTasks} />
                   <UpdateStatus api={API} data={task} reload={_getTasks} />
                   <br />

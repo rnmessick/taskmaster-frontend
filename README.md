@@ -1,7 +1,7 @@
 # Task Master
 
-
 ## Links
+
 - [Frontend](http://taskmasterrenee.s3-website-us-west-2.amazonaws.com/)
 - [Backend](http://taskmasterbackend-env.yzch9c73jx.us-west-2.elasticbeanstalk.com/api/v1/tasks)
 
@@ -9,7 +9,12 @@
 
 Nick Paro
 
-****************************************
+## Resources
+
+https://stackoverflow.com/questions/30803168/data-map-is-not-a-function/30803220
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

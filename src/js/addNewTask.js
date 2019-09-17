@@ -42,11 +42,11 @@ export default function AddTask(props) {
       <fieldset>
         <legend>Add a new task:</legend>
         <div>
-          <label htmlFor="title">Task Title</label>
+          <label >Task Title</label>
           <input onChange={_handleChange} type="text" name="title" id="title"></input>
         </div>
         <div>
-          <label htmlFor="description">Description</label>
+          <label >Description</label>
           <textarea onChange={_handleChange} type="text" name="description" id="description" rows="4" cols="50"></textarea>
         </div>
         <button type="submit">Submit</button>
