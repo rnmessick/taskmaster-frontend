@@ -11,7 +11,16 @@ Nick Paro
 
 ## Resources
 
-https://stackoverflow.com/questions/30803168/data-map-is-not-a-function/30803220
+https://memorynotfound.com/java-resize-image-fixed-width-height-example/
+
+https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-deployment-pkg.html#with-s3-example-deployment-pkg-java
+
+https://slack-redir.net/link?url=https%3A%2F%2Fdocs.aws.amazon.com%2Flambda%2Flatest%2Fdg%2Fwith-s3-example-deployment-pkg.html%23with-s3-example-deployment-pkg-java
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html
+
+LambdaLogger logger = context.getLogger();
+logger.log("The answer is: " + context.toString());
 
 ---
 
