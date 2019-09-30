@@ -3,11 +3,17 @@
 ## Links
 
 - [Frontend](http://taskmasterrenee.s3-website-us-west-2.amazonaws.com/)
-- [Backend](http://taskmasterbackend-env.yzch9c73jx.us-west-2.elasticbeanstalk.com/api/v1/tasks)
+- [Backend](https://rulf20aywd.execute-api.us-west-2.amazonaws.com/dev/tasks)
+
+![Cors fail](src/resources/myErrors.JPG)
 
 ## Collaborators
 
+
+Marisha Hoza
+Brandon Hurrington
 Nick Paro
+Nhu Trin
 
 ## Resources
 
