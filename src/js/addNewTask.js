@@ -1,44 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function AddTask(props) {
-  let API = `${props.api}`;
-  const [title, setTitle] = useState({});
-  const [task, setTask] = useState({});
+  //for uploads
+  let form = new FormData();
 
-  let createTask = {
-    title: title.title,
-    description: task.description,
-  };
+  //for JSON version of the form
+  const [formData, setFormData] = useState({});
 
-  const _handleChange = (e) => {
-    let field = e.target.name;
-    let value = e.target.value;
-    if (field === 'title') {
-      setTitle({ [field]: value });
-    } else {
-      setTask({ [field]: value });
-    }
+
+  const API = 'https://vv7fgjnxgi.execute-api.us-west-2.amazonaws.com/dev/tasks';
+
+  function _handleChange(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   }
 
-  const _setTask = e => {
-    e.preventDefault();
-
-    fetch(API,
-      {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(createTask)
-      }
-    )
+  function _handleSubmit(event) {
+    event.preventDefault();
+    fetch(`${API}`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      body: JSON.stringify(formData),
+    })
       .then(response => response.json())
-      .then(() => props.reload());
+      .catch(error => console.error('Error', error))
+      .then(response => console.log('Success:', response));
   }
+
+  useEffect(() => {
+    fetch(API, { mode: 'cors' })
+      .then(data => data.json())
+      .then(task => { console.log(task) })
+      .catch(console.error);
+  });
 
   return (
-    <form onSubmit={_setTask}>
+    <form onSubmit={_handleSubmit}>
       <fieldset>
         <legend>Add a new task:</legend>
         <div>

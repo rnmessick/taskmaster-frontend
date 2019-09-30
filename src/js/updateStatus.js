@@ -2,12 +2,17 @@ import React from 'react';
 
 export default function UpdateStatus(props) {
   function _updateStatus() {
-    let API = `${props.api}/${props.data.id}/state`;
+    let API = `${props.api}/${props.data.id}`;
 
     fetch(API, {
       method: 'PUT',
-      mode: 'cors'
-    }).then(() => props.reload());
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(response => response.json())
+      .then(() => props.reload());
   }
 
   return (

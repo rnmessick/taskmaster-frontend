@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function AssignUser(props) {
   const [assignee, setAssignee] = useState({});
@@ -10,13 +10,25 @@ export default function AssignUser(props) {
     setAssignee({ [field]: value });
   }
 
+  useEffect(() => {
+    fetch(API, { mode: 'cors' })
+      .then(data => data.json())
+      .then(task => { console.log(task) })
+      .catch(console.error);
+  });
+
   const _assignUser = (e) => {
     e.preventDefault();
 
     fetch(API, {
       method: 'PUT',
-      mode: 'cors'
-    }).then(() => props.reload());
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+    })
+      .then(response => response.json())
+      .then(() => props.reload());
   }
 
   return (

@@ -6,15 +6,15 @@ import History from './js/history.js';
 import DeleteTask from './js/deleteTask.js';
 import AssignUser from './js/assignUser.js';
 import AddTask from './js/addNewTask.js';
-import AddImage from './js/addImage.js';
+// import AddImage from './js/addImage.js';
 
 
 function App() {
-  const API = 'http://taskmasterbackend-env.yzch9c73jx.us-west-2.elasticbeanstalk.com/api/v1/tasks/';
+  const API = 'https://vv7fgjnxgi.execute-api.us-west-2.amazonaws.com/dev';
   const [tasks, setTasks] = useState([]);
 
   function _getTasks() {
-    fetch(API)
+    fetch(API + '/tasks')
       .then(data => data.json())
       .then(fetchedTasks => {
         setTasks(fetchedTasks);
@@ -37,15 +37,18 @@ function App() {
                 <details>
                   <summary>
                     <span>{task.title}</span><br />
+                    <span>{task.description}</span>
+
                   </summary>
-                  <img src={task.image} alt={task.title} />
+                  <span>Assigned: {task.assignee}</span><br></br>
+                  <span>Status: {task.getAction}</span>
+                  {/* <img src={task.image} alt={task.title} /> */}
                   <History api={API} history={task.history} reload={_getTasks} />
-                  <AssignUser api={API} data={task} reload={_getTasks} />
+                  <AssignUser api={API} data={task} reload={_getTasks}>  </AssignUser>
                   <UpdateStatus api={API} data={task} reload={_getTasks} />
                   <br />
-                  <AddImage api={API} data={task} reload={_getTasks} />
-                  <br />
                   <DeleteTask api={API} data={task} reload={_getTasks} />
+
                 </details>
               </li>
             )
